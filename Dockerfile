@@ -1,7 +1,7 @@
-FROM node:20 AS builder
+FROM node:14.17-alpine AS builder
 RUN apk add --no-cache git
 WORKDIR /app
-COPY frontend/package.json frontend/package-lock.json ./
+COPY frontend/package.json frontend/yarn.lock ./
 RUN yarn install --pure-lockfile
 COPY frontend .
 RUN yarn build
